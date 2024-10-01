@@ -1,0 +1,283 @@
+/* Allgemeine Styles */
+body {
+    color: #393937;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    color: #393937;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    margin: 10px;
+    padding: 0;
+}
+
+h1 {
+    color: #393937;
+    text-align: center;
+    font-family: 'Modak', sans-serif;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130px; /* 130% */
+}
+
+h2 {
+    color: #393937;
+    text-align: center;
+    font-family: 'Modak', sans-serif;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px; /* 100% */
+}
+
+/* Song Carousel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1222px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item {
+    display: flex;
+    width: 350px;
+    height: 350px;
+    padding: 44px 44px;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 35px;
+    flex-shrink: 10;
+    flex-wrap: wrap;
+    font-size: 30px;
+    background: rgba(219, 206, 255, 0.75);
+    border-radius: 100px;
+    border: 1px solid #393937;
+    transition: transform 0.3s;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05);
+}
+
+/* Custom Arrow Styling */
+.carousel-arrow {
+    background-image: url('/images/arrow_left.svg'); /* Beispiel für links */
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    cursor: pointer;
+    border: none;
+}
+
+.carousel-arrow.right {
+    background-image: url('/images/arrow_right.svg'); /* Beispiel für rechts */
+}
+
+.carousel-arrow:hover {
+    transform: scale(1.0); /* Vergrößerung bei Hover */
+}
+
+/* Listen Button */
+.listen-button {
+    display: flex;
+    width: 188px;
+    height: 65px;
+    padding: 10px 64px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    border-radius: 100px;
+    border: 1px solid #393937;
+    background: #987CEC;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    line-height: normal;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.listen-button:hover {
+    background: linear-gradient(90deg, #B1FF58 0%, #987CECB2 70%);
+}
+/* Kreis und Text */
+.circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    height: 350px;
+    position: relative;
+    animation: swing 3s ease-in-out infinite; /* Animation für das Schaukeln */
+}
+
+/* Der Kreis */
+.circle-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Der Text auf dem Kreis */
+.circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    color: #393937;
+    text-align: center;
+    font-family: 'Modak', sans-serif;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px;
+}
+
+/* Schaukel-Animation */
+@keyframes swing {
+    0% {
+        transform: translate(-50%, -50%) rotate(-30deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(-20deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-30deg);
+    }
+}
+
+/* Song Delivery Container */
+.song-delivery-container {
+    display: flex; /* Flexbox */
+    justify-content: center; /* Zentriert horizontal */
+    align-items: center; /* Zentriert vertikal */
+    align-self: center; /* Zentriert innerhalb des übergeordneten Containers */
+    width: 500px;
+    height: 300px;
+    border-radius: 100px;
+    background-color:  #987CEC; /* Hintergrundfarbe Blau */
+    margin: 99px auto; /* Automatische Zentrierung horizontal */
+    max-width: 100%;
+    color: #393937; /* Textfarbe für die Schrift */
+    text-align: center;
+    font-family: 'Poppins', sans-serif; /* Gleiche Schrift wie für das "body"-Element */
+    font-size: 20px; /* Standardschriftgröße für Body-Text */
+    font-weight: 400; /* Normales Schriftgewicht */
+    border: 1px solid rgba(57, 57, 55, 1);
+    padding: 50px; /* Angepasstes Padding */
+}
+
+
+/* Song Box Container */
+.song-box-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.song-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 130px;
+    background: linear-gradient(90deg, #B1FF58 0%, #987CECB2 70%);
+    border: 1px solid #393937;
+    border-radius: 150px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #393937;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.song-box:hover {
+    transform: scale(1.0);
+    background: #B1FF58;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hintergrundbild bis zum Delivery Container */
+.main-content {
+    position: relative; /* Um das Pseudo-Element zu positionieren */
+    background-color: rgba(255, 255, 255, 0.06); /* Weiß mit 70% Transparenz als Hintergrund */
+    padding: 10px; /* 10px Abstand zum Rand */
+    margin-bottom: 0; /* Kein Abstand unten */
+}
+
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('Images/image1.jpg'); /* Bildpfad zum Ordner Images */
+    background-size: calc(100% - 20px) auto; /* Das Bild füllt den Bereich abzüglich des 10px Abstands */
+    background-position: top center; /* Bild beginnt oben */
+    background-repeat: no-repeat;
+    opacity: 0.7; /* 70% Transparenz */
+    z-index: -1; /* Hinter den Inhalt stellen */
+}
+
+
+
+@media (max-width: 991px) {
+    .main-content {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 40px;
+      line-height: 58px;
+    }
+  
+    h2 {
+      font-size: 40px;
+      line-height: 50px;
+    }
+  
+    .carousel-item {
+      min-width: 200px;
+    }
+  
+    .song-box-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .song-box {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .song-delivery-container {
+      max-width: 100%;
+      margin-top: 40px;
+      padding: 100px 20px;
+    }
+  
+    .carousel-arrow {
+      width: 40px;
+      height: 40px;
+    }
+}

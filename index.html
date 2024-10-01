@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Song Empfehlung</title>
+  <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet"> <!-- Google Font Modak -->
+  <link rel="stylesheet" href="styles.css"> <!-- Dein CSS-File -->
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></head>
+
+</head>
+<body>
+
+  <header class="header"></header>
+
+  <main class="main-content">
+    <section class="recommendation-container">
+      <h1 class="recommendation-title">unsere song <br /> empfehlung für dich</h1>
+
+      <!-- Song Carousel -->
+      <div class="carousel-container">
+        <button class="carousel-arrow left" onclick="slideCarousel(-1)">&#10094;</button>
+        <div class="carousel">
+          <div class="carousel-item">
+            <div class="song-info">
+              <span class="song-number">1</span>
+              <p class="song-title">Frank Ocean - Ivy</p>
+              <button class="listen-button" onclick="listenSong('Frank Ocean - Ivy')">listen</button>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="song-info">
+              <span class="song-number">2</span>
+              <p class="song-title">Adele - Hello</p>
+              <button class="listen-button" onclick="listenSong('Adele - Hello')">listen</button>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="song-info">
+              <span class="song-number">3</span>
+              <p class="song-title">Billie Eilish - Bad Guy</p>
+              <button class="listen-button" onclick="listenSong('Billie Eilish - Bad Guy')">listen</button>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="song-info">
+              <span class="song-number">4</span>
+              <p class="song-title">Drake - Hotline Bling</p>
+              <button class="listen-button" onclick="listenSong('Drake - Hotline Bling')">listen</button>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-arrow right" onclick="slideCarousel(1)">&#10095;</button>
+      </div>
+
+      <!-- Container für Song Delivery Box und Kreis -->
+      <div class="delivery-with-circle">
+        <!-- Song Delivery Container -->
+        <section class="song-delivery-container">
+          <p>Wir liefern dir die passenden Songs für jede Tageszeit. Immer aktuell und top kuratiert vom SRF 1.</p>
+        </section>
+
+        <!-- Kreis und Text -->
+        <div class="circle-container">
+          <svg width="350" height="350">
+            <circle cx="175" cy="175" r="175" fill="#B1FF58" stroke="#000" stroke-width="1" />
+          </svg>
+          <div class="circle-text">
+            <h2>die aktuellsten hits</h2>
+          </div>
+        </div>
+      </div>
+
+    <!-- Song Boxen der Woche -->
+    <section class="top-songs">
+      <h2 class="section-title">die besten songs <br /> der woche</h2>
+      <div class="song-box-container">
+        <div class="song-box">Song 1</div>
+        <div class="song-box">Song 2</div>
+        <div class="song-box">Song 3</div>
+        <div class="song-box">Song 4</div>
+      </div>
+    </section>
+
+    <!-- Artists Boxen der Woche -->
+    <section class="top-artists">
+      <h2 class="section-title">die besten artists <br /> der woche</h2>
+      <div class="song-box-container">
+        <div class="song-box">Artist 1</div>
+        <div class="song-box">Artist 2</div>
+        <div class="song-box">Artist 3</div>
+        <div class="song-box">Artist 4</div>
+      </div>
+    </section>
+
+    <!-- Logo -->
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4c33f1231330948f74537afbebe4f621f1fc1f58584f531fe4c483b9c0c1bf3d?placeholderIfAbsent=true&apiKey=a3d0b19a754c4c94bc767a3196a73479" alt="Logo" class="logo-image" />
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-logo">
+      <div class="logo-circle">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/981265c1d6c36d0f248d210cd2a655ea0457d44afad45f4224db45284d182017?placeholderIfAbsent=true&apiKey=a3d0b19a754c4c94bc767a3196a73479" alt="Hitsound logo" class="logo" />
+      </div>
+      <span class="logo-text">hitsound</span>
+    </div>
+    <div class="footer-links">
+      <div class="link-group">
+        <h3 class="link-title">let's connect</h3>
+        <nav>
+          <ul class="link-list">
+            <li><a href="#" aria-label="Visit our Instagram">instagram</a></li>
+            <li><a href="#" aria-label="Visit our Facebook">facebook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
