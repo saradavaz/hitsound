@@ -2,12 +2,11 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Song Empfehlung</title>
   <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet"> <!-- Google Font Modak -->
   <link rel="stylesheet" href="styles.css"> <!-- Dein CSS-File -->
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></head>
 
 </head>
 <body>
@@ -83,6 +82,9 @@
       </div>
     </section>
 
+    <!-- Illustration -->
+    <img src="Images/illustration.png" class="illustration" alt="ill" />
+
     <!-- Artists Boxen der Woche -->
     <section class="top-artists">
       <h2 class="section-title">die besten artists <br /> der woche</h2>
@@ -94,31 +96,35 @@
       </div>
     </section>
 
-    <!-- Logo -->
-    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4c33f1231330948f74537afbebe4f621f1fc1f58584f531fe4c483b9c0c1bf3d?placeholderIfAbsent=true&apiKey=a3d0b19a754c4c94bc767a3196a73479" alt="Logo" class="logo-image" />
+    <!-- image2 -->
+    <img src="Images/image2.jpg" class="image2" alt="image2" />
 
   </main>
 
-  <footer class="footer">
-    <div class="footer-logo">
-      <div class="logo-circle">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/981265c1d6c36d0f248d210cd2a655ea0457d44afad45f4224db45284d182017?placeholderIfAbsent=true&apiKey=a3d0b19a754c4c94bc767a3196a73479" alt="Hitsound logo" class="logo" />
-      </div>
-      <span class="logo-text">hitsound</span>
+ <!-- Neuer Footer -->
+ <footer class="footer">
+  <div class="logo-container">
+    <div class="logo-circle">
+      <img loading="lazy" src="Images/logo.png" class="logo-image" alt="Hitsound logo" />
     </div>
-    <div class="footer-links">
-      <div class="link-group">
-        <h3 class="link-title">let's connect</h3>
-        <nav>
-          <ul class="link-list">
-            <li><a href="#" aria-label="Visit our Instagram">instagram</a></li>
-            <li><a href="#" aria-label="Visit our Facebook">facebook</a></li>
-          </ul>
-        </nav>
-      </div>
+  <nav class="footer-links">
+    <div class="footer-column">
+      <h3 class="footer-heading">let's connect</h3>
+      <ul class="footer-list">
+        <li><a href="#" aria-label="Visit our Instagram page">instagram</a></li>
+        <li><a href="#" aria-label="Visit our Facebook page">facebook</a></li>
+      </ul>
     </div>
-  </footer>
+    <div class="footer-column">
+      <h3 class="footer-heading">let's be social</h3>
+      <ul class="footer-list">
+        <li><a href="#" aria-label="Learn about our team">team</a></li>
+        <li><a href="#" aria-label="Contact us">kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+</footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

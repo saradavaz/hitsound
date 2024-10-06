@@ -1,5 +1,6 @@
 /* Allgemeine Styles */
 body {
+    background-color: #f7f7f7;
     color: #393937;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -23,6 +24,7 @@ h1 {
     font-style: normal;
     font-weight: 400;
     line-height: 130px; /* 130% */
+    margin-top: 20px;
 }
 
 h2 {
@@ -42,7 +44,7 @@ h2 {
     max-width: 1222px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     margin-top: 20px;
 }
 
@@ -59,8 +61,8 @@ h2 {
     height: 350px;
     padding: 44px 44px;
     margin: 10px;
-    justify-content: center;
-    align-items: center;
+    justify-content: stretch;
+    align-items: stretch;
     align-content: center;
     gap: 35px;
     flex-shrink: 10;
@@ -78,7 +80,7 @@ h2 {
 
 /* Custom Arrow Styling */
 .carousel-arrow {
-    background-image: url('/images/arrow_left.svg'); /* Beispiel für links */
+    background-image: url('/images/arrow_left.svg'); /* Beispiel fÃ¼r links */
     width: 50px;
     height: 50px;
     background-size: cover;
@@ -87,11 +89,11 @@ h2 {
 }
 
 .carousel-arrow.right {
-    background-image: url('/images/arrow_right.svg'); /* Beispiel für rechts */
+    background-image: url('/images/arrow_right.svg'); /* Beispiel fÃ¼r rechts */
 }
 
 .carousel-arrow:hover {
-    transform: scale(1.0); /* Vergrößerung bei Hover */
+    transform: scale(1.0); /* VergrÃ¶ÃŸerung bei Hover */
 }
 
 /* Listen Button */
@@ -119,16 +121,25 @@ h2 {
 .listen-button:hover {
     background: linear-gradient(90deg, #B1FF58 0%, #987CECB2 70%);
 }
+
+/* Container fÃ¼r Song Delivery Box und Kreis */
+.delivery-with-circle {
+    display: flex;
+    justify-content: center; /* Zentriert den gesamten Inhalt */
+    align-items: center;
+    gap: 20px; /* Abstand zwischen Kreis und Box */
+}
+
 /* Kreis und Text */
 .circle-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 350px;
-    height: 350px;
+    width: 360px; /* Neue Breite fÃ¼r den Kreis */
+    height: 360px; /* Neue HÃ¶he fÃ¼r den Kreis */
     position: relative;
-    animation: swing 3s ease-in-out infinite; /* Animation für das Schaukeln */
+    animation: swing 3s ease-in-out infinite; /* Animation fÃ¼r das Schaukeln */
 }
 
 /* Der Kreis */
@@ -146,11 +157,12 @@ h2 {
     color: #393937;
     text-align: center;
     font-family: 'Modak', sans-serif;
-    font-size: 50px;
+    font-size: 25px; /* Kleinere SchriftgrÃ¶ÃŸe fÃ¼r den Text im kleineren Kreis */
     font-style: normal;
     font-weight: 400;
-    line-height: 50px;
+    line-height: 25px;
 }
+
 
 /* Schaukel-Animation */
 @keyframes swing {
@@ -170,17 +182,17 @@ h2 {
     display: flex; /* Flexbox */
     justify-content: center; /* Zentriert horizontal */
     align-items: center; /* Zentriert vertikal */
-    align-self: center; /* Zentriert innerhalb des übergeordneten Containers */
+    align-self: center; /* Zentriert innerhalb des Ã¼bergeordneten Containers */
     width: 500px;
     height: 300px;
     border-radius: 100px;
     background-color:  #987CEC; /* Hintergrundfarbe Blau */
     margin: 99px auto; /* Automatische Zentrierung horizontal */
     max-width: 100%;
-    color: #393937; /* Textfarbe für die Schrift */
+    color: #393937; /* Textfarbe fÃ¼r die Schrift */
     text-align: center;
-    font-family: 'Poppins', sans-serif; /* Gleiche Schrift wie für das "body"-Element */
-    font-size: 20px; /* Standardschriftgröße für Body-Text */
+    font-family: 'Poppins', sans-serif; /* Gleiche Schrift wie fÃ¼r das "body"-Element */
+    font-size: 20px; /* StandardschriftgrÃ¶ÃŸe fÃ¼r Body-Text */
     font-weight: 400; /* Normales Schriftgewicht */
     border: 1px solid rgba(57, 57, 55, 1);
     padding: 50px; /* Angepasstes Padding */
@@ -219,7 +231,7 @@ h2 {
 /* Hintergrundbild bis zum Delivery Container */
 .main-content {
     position: relative; /* Um das Pseudo-Element zu positionieren */
-    background-color: rgba(255, 255, 255, 0.06); /* Weiß mit 70% Transparenz als Hintergrund */
+    background-color: rgba(255, 255, 255, 0.06); /* WeiÃŸ mit 70% Transparenz als Hintergrund */
     padding: 10px; /* 10px Abstand zum Rand */
     margin-bottom: 0; /* Kein Abstand unten */
 }
@@ -232,14 +244,39 @@ h2 {
     right: 0;
     bottom: 0;
     background-image: url('Images/image1.jpg'); /* Bildpfad zum Ordner Images */
-    background-size: calc(100% - 20px) auto; /* Das Bild füllt den Bereich abzüglich des 10px Abstands */
+    background-size: calc(100% - 20px) auto; /* Das Bild fÃ¼llt den Bereich abzÃ¼glich des 10px Abstands */
     background-position: top center; /* Bild beginnt oben */
     background-repeat: no-repeat;
     opacity: 0.7; /* 70% Transparenz */
     z-index: -1; /* Hinter den Inhalt stellen */
 }
 
+.illustration {
+    display: flex;
+    position: center;
+    justify-content: right;
+    align-items: right;
+    width: 280px;
+    height: 475px;
+}
 
+.image2 {
+    border: 1px solid #393937; /* Gleicher Rahmen wie beim Bild 1 */
+    border-radius: 20px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+    margin: 20px auto;
+    display: block;
+}
+
+/* Tile-Effekt für image2 */
+.image2 {
+    width: 100%; /* Breite des Containers */
+    height: 400px; /* Festgelegte Höhe */
+    background-image: url('Images/image2.jpg'); /* Verweis auf das Bild */
+    background-repeat: repeat; /* Wiederhole das Bild */
+    background-size: 50% 100%; /* Tile-Effekt: Breite auf 50%, Höhe auf 100% */
+    object-fit: cover; /* Bild so positionieren, dass es sich schön im Container anpasst */
+}
 
 @media (max-width: 991px) {
     .main-content {
@@ -280,4 +317,98 @@ h2 {
       width: 40px;
       height: 40px;
     }
+
+    .logo-circle {
+        width: 120px; /* Reduziere die Logo-Größe auf großen Bildschirmen */
+        height: 120px;
+    }
+
+    .logo-image {
+        width: 90px;
+        height: 120px;
+    }
+}
+/* Footer Styles */
+.footer {
+    background-color: #f7f7f7; /* Hellgrau wie der Haupt-Hintergrund */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 100px;
+    overflow: hidden;
+    padding: 26px 80px 26px 22px;
+}
+
+@media (max-width: 991px) {
+    .footer {
+        padding: 0 20px;
+    }
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Richtet das Logo und den Text rechtsbündig aus */
+}
+
+.logo-image {
+    width: 155px;
+    height: 155px;
+    object-fit: contain;
+    margin-top: 20px;
+}
+
+
+
+.footer-links {
+    align-self: start;
+    display: flex;
+    margin-top: 10px;
+    gap: 40px 100px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+    .footer-links {
+        max-width: 100%;
+    }
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-heading {
+    color: #393937;
+    font: 400 30px Modak, sans-serif;
+}
+
+.footer-list {
+    color: #000;
+    margin-top: 14px;
+    font: 300 20px/40px Poppins, sans-serif;
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-list a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-list a:hover {
+    color: #987CEC;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
