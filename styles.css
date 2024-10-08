@@ -1,3 +1,4 @@
+/* Allgemeine Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,40 +7,65 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f7f7f7; /* Heller Hintergrund */
-    color: #393937; /* Dunkle Schriftfarbe */
+    background-color: #f7f7f7;
+    color: #393937;
 }
 
 header {
-    background-color: #987CEC; /* Violett */
-    padding: 20px;
-    text-align: center;
-    animation: fadeIn 1s; /* Einfading Animation */
+    background-color: #f7f7f7;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header h1 {
-    color: white;
-    font-family: 'Modak', sans-serif;
+header .logo {
+    height: 30px;
+    margin-left: 5px;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
+    display: flex;
+    gap: 20px;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
 }
 
 nav ul li a {
-    color: white;
+    color: #393937;
     text-decoration: none;
-    transition: color 0.3s; /* Sanfter Übergang für Links */
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #DBCEFF; /* Helle Schriftfarbe bei Hover */
+    color: #DBCEFF;
+}
+
+h1, h2 {
+    color: #393937; /* Sicherstellen, dass die Schriftfarbe sichtbar ist */
+    text-align: center;
+    font-family: 'Modak', cursive;
+    font-weight: normal; /* Schrift normal, nicht fett */
+}
+
+h1 {
+    font-size: 60px;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 20px 0;
+    font-weight: normal; /* Sicherstellen, dass die Schrift normal ist */
+    color: #393937; /* Textfarbe prüfen */
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 }
 
 main {
@@ -47,55 +73,145 @@ main {
     text-align: center;
 }
 
-.hits-section {
-    margin: 20px auto;
-    background: linear-gradient(90deg, #B1FF58, #DBCEFF); /* Farbverlauf von Grün zu Violett */
-    padding: 15px;
-    border-radius: 10px;
-    animation: slideIn 1s; /* Einblenden Animation */
+/* Bereich für das Swipe-Karussell */
+.carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    gap: 10px; /* Platz zwischen den Elementen */
 }
 
-.hit {
-    background-color: white;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Breite der Hits */
-    transition: transform 0.3s; /* Transformation bei Hover */
+.carousel .song-box {
+    flex: 0 0 40%; /* Boxen werden 40% der Breite eines flex-Containers einnehmen */
+    scroll-snap-align: start;
+    border-radius: 100px;
+    border: 1px solid #393937;
+    background: rgba(219, 206, 255, 0.75);
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
 }
 
-.hit:hover {
-    transform: scale(1.05); /* Vergrößerungseffekt */
+.carousel .song-box h2 {
+    font-family: 'Modak', cursive;
+    font-size: 40px;
+    font-weight: normal; /* Hier Schrift weniger fett */
 }
 
-.about-section {
-    margin: 20px auto;
-    padding: 15px;
+.carousel .song-box p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin: 5px 0;
+    color: #393937;
 }
 
-.about-section h3 {
-    margin-bottom: 10px;
+.carousel .song-box:hover {
+    background-color: #987CEC;
 }
 
-.image-section {
-    margin: 20px auto;
+/* Top Hits und Artists Boxen */
+#weekly-hits, #weekly-artists {
+    display: flex; /* Stellen Sie sicher, dass der Container flexibel bleibt */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    visibility: visible; /* Sichtbar machen */
+    opacity: 1; /* Falls es Transparenzprobleme gibt */
+}
+
+.song-box {
+    background: linear-gradient(135deg, #987CEC, #B1FF58);
+    border-radius: 200px;
+    border: 1px solid #393937;
+    padding: 20px;
+    width: 60%;
+    text-align: center;
+}
+
+.song-box:hover {
+    background: #B1FF58;
+}
+
+.song-box h2 {
+    font-family: 'Modak', cursive;
+    font-size: 40px;
+    margin-bottom: 4px;
+}
+
+.song-box p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #393937;
 }
 
 .illustration {
-    width: 100%; /* Breite anpassen */
-    max-width: 400px; /* Maximalbreite für das Bild */
-    height: auto;
+    height: 400px;
+    width: 400px;
+    align-self: right;
+    margin: 20px;
 }
 
+/* Footer styling */
 footer {
-    background-color: #987CEC; /* Violett */
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative; /* Relative Positionierung */
-    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f7f7f7;
+}
+
+.footer-left img {
+    height: 50px;
+}
+
+.footer-right {
+    display: flex;
+    gap: 50px;
+}
+
+.footer-column h2 {
+    font-family: 'Modak', cursive;
+    font-size: 20px;
+    color: #393937;
+}
+
+.footer-column a {
+    display: block;
+    margin-top: 5px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: #393937;
+}
+
+.footer-column a:hover {
+    color: #DBCEFF;
+}
+
+/* Hintergrundbild */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100vh;
+    background-image: url('Images/image1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.footer-image {
+    width: 100%; /* Breite des Bildschirms */
+    height: 200px; /* Feste Höhe */
+    object-fit: cover; /* Bild zuschneiden, um die Box zu füllen */
+    border-radius: 10px; /* Abgerundete Ecken wie bei den Boxen */
+    border: 1px solid #393937; /* Rahmen wie die Boxen oben */
+    background: rgba(219, 206, 255, 0.75); /* Hintergrundfarbe wie oben */
+    margin-top: 20px;
+    display: block;
 }
 
 @media (max-width: 600px) {
@@ -104,17 +220,7 @@ footer {
         margin: 5px 0;
     }
 
-    .hit {
-        width: 90%; /* Vollbreite auf kleinen Bildschirmen */
+    .song-box {
+        width: 90%;
     }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
 }

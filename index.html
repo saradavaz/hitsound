@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,51 +8,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Modak&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-    <title>SRF1 Top Hits</title>
+    <link rel="icon" href="Images/logo.png"> <!-- Logo als Browser-Icon -->
+    <title>hitsound</title>
 </head>
+
 <body>
     <header>
-        <h1>SRF1 Top Hits</h1>
+        <img src="Images/logo.png" alt="Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Top Hits</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">top hits</a></li>
+                <li><a href="#">about</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <h1>unsere song empfehlung für dich</h1>
+
         <section class="hits-section" id="hits-container">
-            <h2>Passendste Songs zur aktuellen Zeit</h2>
-            <!-- Dynamisch generierte Songs -->
+            <div class="carousel" id="song-carousel">
+                <!-- Dynamisch generierte Songs als Swipe-Karussell -->
+            </div>
         </section>
 
         <section class="hits-section" id="weekly-hits">
-            <h2>Meistgespielte Songs der Woche</h2>
-            <!-- Dynamisch generierte Songs -->
-        </section>
-
-        <section class="hits-section" id="weekly-artists">
-            <h2>Meistgespielte Künstler der Woche</h2>
-            <!-- Dynamisch generierte Künstler -->
-        </section>
-
-        <section class="about-section">
-            <h3>About Hitsound</h3>
-            <p>Hitsound steht für die aktuellsten und beliebtesten Songs, die die Menschen hören. Wir bringen die besten Melodien direkt zu dir!</p>
-            <p>Entdecke die Trends und bleibe immer auf dem Laufenden mit den neuesten Hits.</p>
+            <h2>die top hits der woche</h2> <!-- Sicherstellen, dass der Titel existiert -->
+            <!-- Dynamisch generierte Songs werden hier eingefügt -->
         </section>
 
         <section class="image-section">
             <img src="Images/illustration.png" alt="Illustration" class="illustration">
         </section>
+
+        <section class="hits-section" id="weekly-artists">
+            <h2>die top artist der woche</h2> <!-- Sicherstellen, dass der Titel existiert -->
+            <!-- Dynamisch generierte Künstler -->
+        </section>
+
+        <img src="Images/image2.jpg" alt="Footer Image" class="footer-image">
     </main>
 
     <footer>
-        <p>&copy; 2024 SRF1. Alle Rechte vorbehalten.</p>
+        <div class="footer-left">
+            <img src="Images/logo.png" alt="Footer Logo" class="footer-logo">
+        </div>
+        <div class="footer-right">
+            <div class="footer-column">
+                <h2>Let's Connect</h2>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+            <div class="footer-column">
+                <h2>Let's Talk</h2>
+                <a href="#">Contact</a>
+                <a href="#">About</a>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
