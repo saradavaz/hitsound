@@ -1,95 +1,81 @@
 <?php
 
-require_once 'config.php'; // Stellen Sie sicher, dass dies auf Ihre tatsächliche Konfigurationsdatei verweist
+require_once 'config.php'; // Verweis auf die Konfigurationsdatei
 
 header('Content-Type: application/json');
 
 try {
     $pdo = new PDO($dsn, $username, $password, $options);
-    $cities = ['Bern', 'Chur', 'Zürich'];
-    $results = [];
 
-    foreach ($cities as $city) {
-        // Bereitet eine SQL-Anfrage vor, um Wetterdaten für eine bestimmte Stadt zu holen, sortiert nach dem neuesten Datum
-        $stmt = $pdo->prepare("SELECT * FROM hitsound");
-        $stmt->execute(); // Führt die vorbereitete Anfrage mit der Stadt als Parameter aus
-        $results[$city] = $stmt->fetchAll(); // Speichert die Ergebnisse im Array $results
+    // Definiere Zeiträume für Morgen, Nachmittag und Nacht (im 24-Stunden-Format)
+    $morning_start = '06:00:00';
+    $morning_end = '12:00:00';
+    $afternoon_start = '12:00:01';
+    $afternoon_end = '18:00:00';
+    $yesterday_night_start = '18:00:01'; // Gestern Nacht Start
+    $yesterday_night_end = '23:59:59'; // Gestern Nacht Ende
+    $this_night_start = '00:00:00'; // Heute Nacht Start
+    $this_night_end = '05:59:59'; // Heute Nacht Ende
+
+    // Heutiges Datum und das Datum von gestern abrufen
+    $today = date('Y-m-d');
+    $yesterday = date('Y-m-d', strtotime('-1 day'));
+
+    // Aktuelle Uhrzeit abrufen
+    $current_time = date('H:i:s');
+
+    // SQL-Statement um Songs von heute zu holen
+    $stmt_today = $pdo->prepare("SELECT * FROM hitsound WHERE DATE(played_time) = :today ORDER BY played_time");
+    $stmt_today->execute(['today' => $today]);
+    $today_songs = $stmt_today->fetchAll(PDO::FETCH_ASSOC);
+
+    // SQL-Statement um die Nachmittagssongs von gestern zu holen (wenn aktuell morgen ist)
+    if ($current_time < $morning_end) {
+        $stmt_yesterday_afternoon = $pdo->prepare("SELECT * FROM hitsound WHERE DATE(played_time) = :yesterday AND TIME(played_time) >= :afternoon_start AND TIME(played_time) <= :afternoon_end ORDER BY played_time");
+        $stmt_yesterday_afternoon->execute(['yesterday' => $yesterday, 'afternoon_start' => $afternoon_start, 'afternoon_end' => $afternoon_end]);
+        $afternoon_songs = $stmt_yesterday_afternoon->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $afternoon_songs = []; // Keine Nachmittagslieder von gestern, wenn es nicht Morgen ist
     }
 
-    echo json_encode($results); // Gibt die Wetterdaten im JSON-Format aus
-} catch (PDOException $e) {
-    echo json_encode(['error' => $e->getMessage()]); // Gibt einen Fehler im JSON-Format aus, falls eine Ausnahme auftritt
-}
-/*
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+    // SQL-Statement um die Nacht-Songs von gestern zu holen
+    $stmt_yesterday_night = $pdo->prepare("SELECT * FROM hitsound WHERE DATE(played_time) = :yesterday AND TIME(played_time) >= :yesterday_night_start AND TIME(played_time) <= :yesterday_night_end ORDER BY played_time");
+    $stmt_yesterday_night->execute(['yesterday' => $yesterday, 'yesterday_night_start' => $yesterday_night_start, 'yesterday_night_end' => $yesterday_night_end]);
+    $yesterday_night_songs = $stmt_yesterday_night->fetchAll(PDO::FETCH_ASSOC);
 
-// Include the config file
-require_once 'config.php';
+    // SQL-Statement um die Nacht-Songs von heute zu holen (falls es noch Nacht ist)
+    $stmt_this_night = $pdo->prepare("SELECT * FROM hitsound WHERE DATE(played_time) = :today AND TIME(played_time) >= :this_night_start AND TIME(played_time) <= :this_night_end ORDER BY played_time");
+    $stmt_this_night->execute(['today' => $today, 'this_night_start' => $this_night_start, 'this_night_end' => $this_night_end]);
+    $this_night_songs = $stmt_this_night->fetchAll(PDO::FETCH_ASSOC);
 
-// Funktion, um die Daten per API abzurufen
-function fetchMusicData() {
-    $url = "https://il.srgssr.ch/integrationlayer/2.0/srf/songList/radio/byChannel/69e8ac16-4327-4af4-b873-fd5cd6e895a7";
-    
-    // Initialisiert eine cURL-Sitzung
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // Debugging: Ausgabe der Anzahl der Songs für jede Kategorie
+    error_log('Songs from today: ' . count($today_songs));
+    error_log('Afternoon songs from yesterday: ' . count($afternoon_songs));
+    error_log('Yesterday night songs: ' . count($yesterday_night_songs));
+    error_log('This night songs: ' . count($this_night_songs));
 
-    // Führt die cURL-Sitzung aus und erhält den Inhalt
-    $response = curl_exec($ch);
+    // Arrays für die verschiedenen Tageszeiten
+    $morning_songs = [];
 
-    // Überprüft auf Fehler
-    if(curl_errno($ch)) {
-        echo 'Error:' . curl_error($ch);
-    }
+    // Sortiere die Songs von heute nach den Tageszeiten
+    foreach ($today_songs as $song) {
+        $play_time = date('H:i:s', strtotime($song['played_time'])); // Extrahiere die Uhrzeit
 
-    // Schließt die cURL-Sitzung
-    curl_close($ch);
-
-    // Dekodiert die JSON-Antwort und gibt Daten zurück
-    return json_decode($response, true);
-}
-
-// Abrufen der Daten
-$data = fetchMusicData();
-
-// Überprüfen, ob Daten vorhanden sind
-if (isset($data['songList']) && is_array($data['songList'])) {
-    // Establish database connection
-    try {
-        $pdo = new PDO($dsn, $username, $password, $options);
-    } catch (PDOException $e) {
-        die("Connection failed: " . $e->getMessage());
-    }
-
-    // SQL-Statement vorbereiten
-    $sql = "INSERT INTO hitsound (artist, song, played_time) VALUES (:artist, :song, :played_time)";
-    $stmt = $pdo->prepare($sql);
-
-    // Beginne Transaktion
-    $pdo->beginTransaction();
-    try {
-        foreach ($data['songList'] as $song) {
-            if (isset($song['artist']['name']) && isset($song['title']) && isset($song['date'])) {
-                $played_time = date('Y-m-d H:i:s', strtotime($song['date']));
-                $stmt->execute([
-                    ':artist' => $song['artist']['name'],
-                    ':song' => $song['title'],
-                    ':played_time' => $played_time
-                ]);
-            } else {
-                echo "Skipping song due to missing data.\n";
-            }
+        if ($play_time >= $morning_start && $play_time <= $morning_end) {
+            $morning_songs[] = $song;
         }
-        // Commit der Transaktion
-        $pdo->commit();
-        echo "Songs successfully inserted into the database.";
-    } catch (Exception $e) {
-        $pdo->rollBack();
-        echo "Failed to insert data: " . $e->getMessage();
     }
-} else {
-    echo "No songs found in the API response.";
+
+    // Ergebnis als JSON ausgeben
+    echo json_encode([
+        'morning' => $morning_songs,
+        'afternoon' => ($current_time < $morning_end) ? $afternoon_songs : $today_songs, // Include yesterday's afternoon if it's still morning
+        'yesterday_night' => $yesterday_night_songs,
+        'this_night' => $this_night_songs
+    ]);
+
+} catch (PDOException $e) {
+    echo json_encode(['error' => $e->getMessage()]);
 }
-*/
+
 ?>

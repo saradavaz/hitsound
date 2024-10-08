@@ -33,31 +33,41 @@ function fetchMusicData() {
 // Abrufen der Daten
 $data = fetchMusicData();
 
-
-
 // Establish database connection
 try {
     $pdo = new PDO($dsn, $username, $password, $options);
-    } catch (PDOException $e) {
+} catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
-    }
+}
 
-// SQL-Statement vorbereiten
-$sql = "INSERT INTO hitsound (artist, song, played_time) VALUES (:artist, :song, :played_time)";
-$stmt = $pdo->prepare($sql);
+// SQL-Statement für das Einfügen vorbereiten
+$insertSql = "INSERT INTO hitsound (artist, song, played_time) VALUES (:artist, :song, :played_time)";
+$insertStmt = $pdo->prepare($insertSql);
 
-// Daten aus der API in die Datenbank einfügen
+// SQL-Statement für das Überprüfen auf Duplikate vorbereiten
+$checkSql = "SELECT COUNT(*) FROM hitsound WHERE played_time = :played_time";
+$checkStmt = $pdo->prepare($checkSql);
+
+// Daten aus der API in die Datenbank einfügen, aber nur wenn es kein Duplikat gibt
 foreach ($data['songList'] as $song) {
     if (isset($song['artist']['name']) && isset($song['title']) && isset($song['date'])) {
         // Konvertiere das Datum in das richtige Format für MySQL DATETIME
         $played_time = date('Y-m-d H:i:s', strtotime($song['date']));
 
-        // Füge den Song in die Datenbank ein
-        $stmt->execute([
-            ':artist' => $song['artist']['name'],
-            ':song' => $song['title'],
-            ':played_time' => $played_time
-        ]);
+        // Überprüfe, ob bereits ein Eintrag mit dieser played_time existiert
+        $checkStmt->execute([':played_time' => $played_time]);
+        $count = $checkStmt->fetchColumn();
+
+        if ($count == 0) {
+            // Füge den Song in die Datenbank ein, wenn kein Duplikat vorhanden ist
+            $insertStmt->execute([
+                ':artist' => $song['artist']['name'],
+                ':song' => $song['title'],
+                ':played_time' => $played_time
+            ]);
+        } else {
+            echo "Skipping duplicate song: " . $song['title'] . " by " . $song['artist']['name'] . "\n";
+        }
     } else {
         echo "Skipping song due to missing data.\n";
     }
