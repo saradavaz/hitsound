@@ -7,7 +7,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #DBCEFF;
+    font-size: 18px;
+    background-color: #f7f7f7;
     color: #393937;
 }
 
@@ -20,8 +21,9 @@ header {
 }
 
 header .logo {
-    height: 30px;
+    height: 40px;
     margin-left: 5px;
+    margin-top: 10px;
 }
 
 nav ul {
@@ -41,30 +43,35 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #DBCEFF;
+    color: #987CEC;
 }
 
-h1, h2 {
+
+h1 {
     color: #393937;
     text-align: center;
     font-family: 'Modak', cursive;
     font-weight: normal;
-}
-
-h1 {
     font-size: 60px;
     margin-top: 20px;
 }
 
 h2 {
-    font-size: 40px;
+    color: #393937;
+    text-align: center;
+    font-family: 'Modak', cursive;
+    font-weight: normal;
+    font-size: 60px;
     margin: 20px 0;
     font-weight: normal;
 }
 
 p {
     font-family: 'Poppins', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 main {
@@ -78,28 +85,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #393937;
-    color: #ffffff;
-    border: none;
-    padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 1;
-    border-radius: 50%;
-}
-
-.carousel-arrow.left {
-    left: 10px;
-}
-
-.carousel-arrow.right {
-    right: 10px;
 }
 
 .carousel-arrow:hover {
@@ -117,21 +102,87 @@ main {
 }
 
 .carousel .song-box {
-    flex: 0 0 40%;
+    flex: 0 0 50%;
     scroll-snap-align: start;
     border-radius: 100px;
     border: 1px solid #393937;
     background: rgba(219, 206, 255, 0.75);
-    padding: 10px;
+    padding: 40px;
     margin: 10px;
     text-align: center;
 }
 
-
-
 .carousel .song-box:hover {
     background-color: #987CEC;
 }
+
+/* Scrollbar für Webkit-Browser (Chrome, Safari) */
+.carousel::-webkit-scrollbar {
+    width: 12px; /* Breite der Scrollbar */
+    height: 12px; /* Höhe der Scrollbar */
+}
+
+
+/* Scrollbar-Griff (Thumb) */
+.carousel::-webkit-scrollbar-thumb {
+    background-color: #B1FF58; /* Neongrün */
+    border-radius: 10px; /* Abgerundete Ecken für den Scrollbalken */
+    border: 1px solid #393937;
+
+}
+
+/* Hover-Effekt für den Scrollbalken */
+.carousel::-webkit-scrollbar-thumb:hover {
+    background-color: #987CEC; /* Etwas dunkleres Grün bei Hover */
+}
+
+.after-carousel-section {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.logo-and-circle {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Zentriert die Bilder horizontal */
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 100px; /* 100px Abstand unter den Bildern */
+}
+
+
+.footer-logo {
+    z-index: 1;
+    height: 320px;
+}
+
+.circle-image {
+    z-index: 2;
+    height: 250px;
+    top: 20px; /* Anpassung für Überlappung */
+    left: 100px; /* Positionierung des Kreises */
+    animation: rotateCircle 10s linear infinite; /* Animation hinzufügen */
+}
+
+/* Keyframes für die Drehung */
+@keyframes rotateCircle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 
 /* Top Hits und Artists Boxen */
 #weekly-hits, #weekly-artists, #today-hits {
@@ -141,13 +192,9 @@ main {
     gap: 20px;
     padding: 40px;
     margin: 20px auto; /* Zentriert den Container */
-    background-color: #ffffff;
-    border-radius: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 50%; /* Reduziert die Breite auf 80% des Bildschirms */
+    width: 70%; /* Reduziert die Breite auf 80% des Bildschirms */
     max-width: 1200px; /* Setzt ein maximales Limit für sehr große Bildschirme */
 }
-
 
 /* Box Styling für jeden Abschnitt */
 .section-container {
@@ -165,8 +212,8 @@ main {
     background: linear-gradient(135deg, #987CEC, #B1FF58);
     border-radius: 200px;
     border: 1px solid #393937;
-    padding: 20px;
-    width: 60%;
+    padding: 30px;
+    width: 80%;
     text-align: center;
 }
 
@@ -182,13 +229,12 @@ main {
 
 .song-box p {
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     color: #393937;
 }
 
 .illustration {
-    height: 400px;
-    width: 400px;
+    width: 30%;
     align-self: right;
     margin: 20px;
 }
@@ -202,7 +248,7 @@ footer {
 }
 
 .footer-left img {
-    height: 50px;
+    height: 150px;
 }
 
 .footer-right {
@@ -220,6 +266,7 @@ footer {
     display: block;
     margin-top: 5px;
     font-family: 'Poppins', sans-serif;
+    font-size: 18px;
     text-decoration: none;
     color: #393937;
 }
@@ -235,25 +282,82 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 50vh;
-    background-image: url('Images/image1.jpg');
+    height: 70vh;
+    background-image: url('Images/Image1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity: 0.8;
-    z-index: -1;
+    opacity: 0.6;
+    z-index: -2;
 }
 
 .footer-image {
-    width: 100%;
+    width: 100vw; /* Nimmt 100% der Viewport-Breite ein */
     height: 400px;
     object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid #393937;
     background: rgba(219, 206, 255, 0.75);
     margin-top: 20px;
+    margin-left: 0; /* Entfernt seitliche Abstände */
+    margin-right: 0; /* Entfernt seitliche Abstände */
+    padding: 0; /* Stellt sicher, dass kein Padding angewendet wird */
     display: block;
+}
+
+/* Styling für die About-Seite */
+.about-section {
+    padding: 0px 0;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 40px auto; /* Nur eine margin-Eigenschaft */
+    background-color: #DBCEFF;
+    padding: 40px;
+    border-radius: 100px;
+    border: 1px solid #393937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 150px;
+}
+
+
+.team-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.team-member {
+    width: 30%;
+    text-align: center;
+    margin: 20px;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 1px solid #393937;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    font-family: 'Modak';;
+    font-size: 30px;
+    color: #393937;
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #393937;
 }
 
 @media (max-width: 600px) {
@@ -265,4 +369,28 @@ body::before {
     .song-box {
         width: 90%;
     }
+
+    .team-container {
+        flex-direction: column;
+    }
+
+    .team-member {
+        width: 90%;
+    }
+}
+
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    margin-bottom: 100px;
+    height: 60%;
+}
+
+.chart-container canvas {
+    max-width: 80%; /* Responsiv */
+    height: 80px;
 }
