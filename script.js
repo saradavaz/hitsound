@@ -138,7 +138,6 @@ function countArtistPlays(songs) {
 
 // Event Listener zum Laden der Daten nach dem DOM-Content für die Homepage
 document.addEventListener('DOMContentLoaded', fetchMusicData);
-
 // Funktion, um die Musikdaten der Woche zu holen und die Diagramme darzustellen
 async function fetchMusicDataWeek() {
     const url = 'https://etl.mmp.li/hitsound/etl/unloadWeek.php';
@@ -215,7 +214,18 @@ function displayArtistsChart(data) {
                             family: 'Poppins',
                             size: 18
                         },
-                        color: '#393937'
+                        color: '#393937',
+                        // Callback zum Erstellen abgerundeter Legendenfarben
+                        generateLabels: function (chart) {
+                            const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
+                            const labelsOriginal = original.call(this, chart);
+
+                            labelsOriginal.forEach(label => {
+                                label.pointStyle = 'roundedRect'; // Abgerundete Ecken
+                            });
+
+                            return labelsOriginal;
+                        }
                     }
                 },
                 tooltip: {
@@ -226,6 +236,11 @@ function displayArtistsChart(data) {
                             return `${label}: ${value} Mal`;
                         }
                     }
+                }
+            },
+            elements: {
+                point: {
+                    radius: 5
                 }
             },
             responsive: true,

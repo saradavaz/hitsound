@@ -75,7 +75,6 @@ p {
 }
 
 main {
-    padding: 20px;
     text-align: center;
 }
 
@@ -98,7 +97,7 @@ main {
     scroll-snap-type: x mandatory;
     gap: 10px;
     width: 100%;
-    padding: 10px 50px; /* Platz für die Pfeile schaffen */
+    padding: 20px 50px; /* Platz für die Pfeile schaffen */
 }
 
 .carousel .song-box {
@@ -118,8 +117,8 @@ main {
 
 /* Scrollbar für Webkit-Browser (Chrome, Safari) */
 .carousel::-webkit-scrollbar {
-    width: 12px; /* Breite der Scrollbar */
-    height: 12px; /* Höhe der Scrollbar */
+    width: 8px; /* Breite der Scrollbar */
+    height: 8px; /* Höhe der Scrollbar */
 }
 
 
@@ -233,17 +232,12 @@ p {
     color: #393937;
 }
 
-.illustration {
-    width: 30%;
-    align-self: right;
-    margin: 20px;
-}
 
 /* Footer styling */
 footer {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 40px;
     background-color: #f7f7f7;
 }
 
@@ -393,4 +387,23 @@ body::before {
 .chart-container canvas {
     max-width: 80%; /* Responsiv */
     height: 80px;
+}
+
+/* Styling für die Contact-Seite */
+.contact-section {
+    padding: 0px 0;
+}
+
+.contact-text {
+    max-width: 800px;
+    margin: 40px auto; /* Nur eine margin-Eigenschaft */
+    background-color: #DBCEFF;
+    padding: 40px;
+    border-radius: 100px;
+    border: 1px solid #393937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 150px;
 }
