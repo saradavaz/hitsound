@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f7f7f7;
+    background-color: #DBCEFF;
     color: #393937;
 }
 
@@ -45,10 +45,10 @@ nav ul li a:hover {
 }
 
 h1, h2 {
-    color: #393937; /* Sicherstellen, dass die Schriftfarbe sichtbar ist */
+    color: #393937;
     text-align: center;
     font-family: 'Modak', cursive;
-    font-weight: normal; /* Schrift normal, nicht fett */
+    font-weight: normal;
 }
 
 h1 {
@@ -59,8 +59,7 @@ h1 {
 h2 {
     font-size: 40px;
     margin: 20px 0;
-    font-weight: normal; /* Sicherstellen, dass die Schrift normal ist */
-    color: #393937; /* Textfarbe prüfen */
+    font-weight: normal;
 }
 
 p {
@@ -73,16 +72,52 @@ main {
     text-align: center;
 }
 
-/* Bereich für das Swipe-Karussell */
+/* Pfeile für das Karussell */
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #393937;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.carousel-arrow.left {
+    left: 10px;
+}
+
+.carousel-arrow.right {
+    right: 10px;
+}
+
+.carousel-arrow:hover {
+    background-color: #705ca7;
+}
+
+/* Karussell bleibt wie bisher */
 .carousel {
     display: flex;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-    gap: 10px; /* Platz zwischen den Elementen */
+    gap: 10px;
+    width: 100%;
+    padding: 10px 50px; /* Platz für die Pfeile schaffen */
 }
 
 .carousel .song-box {
-    flex: 0 0 40%; /* Boxen werden 40% der Breite eines flex-Containers einnehmen */
+    flex: 0 0 40%;
     scroll-snap-align: start;
     border-radius: 100px;
     border: 1px solid #393937;
@@ -92,31 +127,38 @@ main {
     text-align: center;
 }
 
-.carousel .song-box h2 {
-    font-family: 'Modak', cursive;
-    font-size: 40px;
-    font-weight: normal; /* Hier Schrift weniger fett */
-}
 
-.carousel .song-box p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    margin: 5px 0;
-    color: #393937;
-}
 
 .carousel .song-box:hover {
     background-color: #987CEC;
 }
 
 /* Top Hits und Artists Boxen */
-#weekly-hits, #weekly-artists {
-    display: flex; /* Stellen Sie sicher, dass der Container flexibel bleibt */
+#weekly-hits, #weekly-artists, #today-hits {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    visibility: visible; /* Sichtbar machen */
-    opacity: 1; /* Falls es Transparenzprobleme gibt */
+    gap: 20px;
+    padding: 40px;
+    margin: 20px auto; /* Zentriert den Container */
+    background-color: #ffffff;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%; /* Reduziert die Breite auf 80% des Bildschirms */
+    max-width: 1200px; /* Setzt ein maximales Limit für sehr große Bildschirme */
+}
+
+
+/* Box Styling für jeden Abschnitt */
+.section-container {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-family: 'Modak', cursive;
+    font-size: 50px;
+    color: #393937;
+    margin-bottom: 20px;
 }
 
 .song-box {
@@ -183,7 +225,7 @@ footer {
 }
 
 .footer-column a:hover {
-    color: #DBCEFF;
+    color: #987CEC;
 }
 
 /* Hintergrundbild */
@@ -193,7 +235,7 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background-image: url('Images/image1.jpg');
     background-size: cover;
     background-position: center;
@@ -204,12 +246,12 @@ body::before {
 }
 
 .footer-image {
-    width: 100%; /* Breite des Bildschirms */
-    height: 200px; /* Feste Höhe */
-    object-fit: cover; /* Bild zuschneiden, um die Box zu füllen */
-    border-radius: 10px; /* Abgerundete Ecken wie bei den Boxen */
-    border: 1px solid #393937; /* Rahmen wie die Boxen oben */
-    background: rgba(219, 206, 255, 0.75); /* Hintergrundfarbe wie oben */
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #393937;
+    background: rgba(219, 206, 255, 0.75);
     margin-top: 20px;
     display: block;
 }
