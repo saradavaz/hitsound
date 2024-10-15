@@ -3,15 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></head>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Modak&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <link rel="icon" href="Images/logo.png">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></head>
-    <title>top hits & artists - hitsound</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Top Hits & Artists - hitsound</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Bibliothek korrekt einbinden -->
 </head>
 
 <body>
@@ -26,19 +25,19 @@
     </header>
 
     <main>
-
         <!-- Section für das Artists Kreisdiagramm -->
-        <section class="chart-container" style="height: 450px;">
-            <h2>Die top Artists der Woche</h2>
-            <canvas id="artistsChart"></canvas>
+        <section class="chart-container">
+            <h1>Die top Artists der Woche</h1>
+            <canvas id="artistsChart" style="max-height: 500px;"></canvas> <!-- Canvas für Artists Diagramm -->
         </section>
-
+    
         <!-- Section für das Songs Balkendiagramm -->
-        <section class="chart-container" style="height: 500px;">
-            <h2>Die top Songs der Woche</h2>
-            <canvas id="songsChart"></canvas>
+        <section class="chart-container">
+            <h1>Die top Songs der Woche</h1>
+            <canvas id="songsChart" style="max-height: 500px;"></canvas> <!-- Canvas für Songs Diagramm -->
         </section>
     </main>
+    
 
     <footer>
         <div class="footer-left">
@@ -58,6 +57,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Sicherstellen, dass der richtige JS-Pfad verwendet wird -->
 </body>
 </html>

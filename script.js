@@ -1,3 +1,14 @@
+// Wechsel des Bildes bei Hover
+document.querySelectorAll('.team-image').forEach(img => {
+    img.addEventListener('mouseover', () => {
+        img.src = img.getAttribute('data-hover');
+    });
+
+    img.addEventListener('mouseout', () => {
+        img.src = img.getAttribute('data-default');
+    });
+});
+
 // Funktion, um die Musikdaten der Homepage zu holen und 6 Songs im Karussell anzuzeigen
 async function fetchMusicData() {
     const url = 'https://etl.mmp.li/hitsound/etl/unload.php';
@@ -179,19 +190,17 @@ function displayArtistsChart(data) {
     const artistNames = sortedArtists.map(([artist]) => artist);
     const playCounts = sortedArtists.map(([, count]) => count);
 
-    // Einfarbige Palette mit Abstufungen von "987CEC" (Violett)
     const backgroundColors = [
-        'rgba(152, 126, 236, 1)', // Volles Violett
-        'rgba(152, 126, 236, 0.9)', // 90% Opazität
+        'rgba(152, 126, 236, 1)',
+        'rgba(152, 126, 236, 0.9)',
         'rgba(152, 126, 236, 0.8)',
         'rgba(152, 126, 236, 0.7)',
         'rgba(152, 126, 236, 0.6)',
         'rgba(152, 126, 236, 0.5)',
         'rgba(152, 126, 236, 0.4)',
-        'rgba(152, 126, 236, 0.3)'  // 30% Opazität
+        'rgba(152, 126, 236, 0.3)'
     ];
 
-    // Chart.js nutzen, um ein Kreisdiagramm zu erstellen
     const ctx = document.getElementById('artistsChart').getContext('2d');
     const artistsChart = new Chart(ctx, {
         type: 'pie',
@@ -215,13 +224,12 @@ function displayArtistsChart(data) {
                             size: 18
                         },
                         color: '#393937',
-                        // Callback zum Erstellen abgerundeter Legendenfarben
                         generateLabels: function (chart) {
                             const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
                             const labelsOriginal = original.call(this, chart);
 
                             labelsOriginal.forEach(label => {
-                                label.pointStyle = 'roundedRect'; // Abgerundete Ecken
+                                label.pointStyle = 'roundedRect';
                             });
 
                             return labelsOriginal;
@@ -236,11 +244,6 @@ function displayArtistsChart(data) {
                             return `${label}: ${value} Mal`;
                         }
                     }
-                }
-            },
-            elements: {
-                point: {
-                    radius: 5
                 }
             },
             responsive: true,
@@ -273,7 +276,6 @@ function displaySongsChart(data) {
     const songNames = sortedSongs.map(([song]) => song);
     const playCounts = sortedSongs.map(([, count]) => count);
 
-    // Chart.js nutzen, um ein Balkendiagramm zu erstellen
     const ctx = document.getElementById('songsChart').getContext('2d');
     const songsChart = new Chart(ctx, {
         type: 'bar',
@@ -288,15 +290,17 @@ function displaySongsChart(data) {
                 borderRadius: {
                     topLeft: 20,
                     topRight: 20
-                } // Abrundung oben
+                }
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
                     grid: {
-                        display: false // Kachelhintergrund entfernen
+                        display: false
                     },
                     ticks: {
                         font: {
@@ -348,12 +352,13 @@ function displaySongsChart(data) {
                         }
                     }
                 }
-            },
-            responsive: true,
-            maintainAspectRatio: false
+            }
         }
     });
 }
+
+// Event Listener für das Laden der Daten nach dem DOM-Content
+document.addEventListener('DOMContentLoaded', fetchMusicDataWeek);
 
 // Hilfsfunktion, um die Wiedergaben der Artists zu zählen
 function countArtistPlays(songs) {
@@ -374,6 +379,3 @@ function countSongPlays(songs) {
     });
     return songCounts;
 }
-
-// Event Listener für die Charts
-document.addEventListener('DOMContentLoaded', fetchMusicDataWeek);

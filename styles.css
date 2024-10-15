@@ -53,7 +53,7 @@ h1 {
     font-family: 'Modak', cursive;
     font-weight: normal;
     font-size: 60px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 h2 {
@@ -63,8 +63,32 @@ h2 {
     font-weight: normal;
     font-size: 60px;
     margin: 20px 0;
+    margin-top: 20px;
     font-weight: normal;
 }
+
+/* Responsives Verhalten für Tablets (max. Breite 768px) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 45px; /* Etwas kleinere Schriftgröße für Tablets */
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+}
+
+/* Responsives Verhalten für Smartphones (max. Breite 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 35px; /* Noch kleinere Schriftgröße für Smartphones */
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+}
+
 
 p {
     font-family: 'Poppins', sans-serif;
@@ -152,7 +176,7 @@ main {
 
 .footer-logo {
     z-index: 1;
-    height: 320px;
+    height: 300px;
 }
 
 .circle-image {
@@ -237,12 +261,17 @@ p {
 footer {
     display: flex;
     justify-content: space-between;
-    padding: 40px;
+    padding: 30px;
     background-color: #f7f7f7;
 }
 
 .footer-left img {
-    height: 150px;
+    height: 150px; /* Höhe etwas kleiner gemacht */
+    object-fit: cover;
+    margin-left: 5px;
+    margin-right: 10px;
+    padding: 0;
+    display: block;
 }
 
 .footer-right {
@@ -252,7 +281,7 @@ footer {
 
 .footer-column h2 {
     font-family: 'Modak', cursive;
-    font-size: 20px;
+    font-size: 18px;
     color: #393937;
 }
 
@@ -287,14 +316,14 @@ body::before {
 }
 
 .footer-image {
-    width: 100vw; /* Nimmt 100% der Viewport-Breite ein */
-    height: 400px;
+    width: 100vw; /* Nimmt 80% der Viewport-Breite ein */
+    height: 400px; /* Höhe etwas kleiner gemacht */
     object-fit: cover;
     background: rgba(219, 206, 255, 0.75);
     margin-top: 20px;
-    margin-left: 0; /* Entfernt seitliche Abstände */
-    margin-right: 0; /* Entfernt seitliche Abstände */
-    padding: 0; /* Stellt sicher, dass kein Padding angewendet wird */
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
     display: block;
 }
 
@@ -339,6 +368,11 @@ body::before {
     object-fit: cover;
     border: 1px solid #393937;
     margin-bottom: 10px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.team-member img:hover {
+    opacity: 0; /* Verhindert abruptes Umschalten */
 }
 
 .team-member h3 {
@@ -361,7 +395,7 @@ body::before {
     }
 
     .song-box {
-        width: 90%;
+        width: 80%;
     }
 
     .team-container {
@@ -369,25 +403,49 @@ body::before {
     }
 
     .team-member {
-        width: 90%;
+        width: 80%;
     }
-}
 
+    .about-text {
+        margin: 10px;
+    }
+
+}
 
 .chart-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
-    margin-bottom: 100px;
-    height: 60%;
+    padding: 20px;
+    margin: 20px 0;
+    width: 100%;
 }
 
 .chart-container canvas {
-    max-width: 80%; /* Responsiv */
-    height: 80px;
+    max-width: 100%;
+    max-height: 500px; /* Maximale Höhe von 500px */
 }
+
+.chart-container h1 {
+    font-family: 'Modak', cursive;
+    font-size: 40px;
+    text-align: center;
+    color: #393937;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .chart-container h1 {
+        font-size: 28px; /* Kleinere Schrift auf mobilen Geräten */
+    }
+
+    .chart-container {
+        padding: 10px;
+    }
+}
+
+
 
 /* Styling für die Contact-Seite */
 .contact-section {
@@ -406,4 +464,15 @@ body::before {
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 150px;
+}
+
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .contact-text {
+        margin: 10px;
+    }
 }
