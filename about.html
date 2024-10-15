@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Modak&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <link rel="icon" href="Images/logo.png"> <!-- Logo als Browser-Icon -->
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>about - hitsound</title>
 </head>
 
@@ -18,7 +18,7 @@
         <a href="index.html"><img src="Images/logo.png" alt="Logo" class="logo"></a> <!-- Klick auf Logo führt zur Homepage -->
         <nav>
             <ul>
-                <li><a href="hits.html">top hits</a></li> <!-- Link zur Top Hits Seite -->
+                <li><a href="hits.html">charts</a></li> <!-- Link zur Top Hits Seite -->
                 <li><a href="about.html">about</a></li> <!-- Link zur About-Seite -->
             </ul>
         </nav>
@@ -29,23 +29,23 @@
         <section class="about-section">
             <div class="about-text">
                 <p>
-                    hitsound ist deine Plattform für die besten Musikempfehlungen, die deinen Mood treffen. 
-                    Egal, ob du nach morgendlichen Vibes, Nachmittagsbeats oder nächtlichen Sounds suchst – wir haben 
-                    immer den perfekten Song für dich. Mit einem kuratierten Mix aus beliebten Tracks und Hidden Gems bringen wir dir die Musik, die du liebst.
+                    hitsound bietet dir einen Überblick zu den aktuellen Top Hits, welche im Radio SRF 1 zu hören sind. Wir fassen zusammen, welches die 4 Top Hits der aktuellen Woche sowie auch die 4 Top Artists der Woche sind.<br>All diese Informationen basieren darauf, wie häufig ein Lied im Radio gespielt worden ist. Stöbere dich jetzt durch und lass dich inspirieren!
                 </p>
             </div>
 
-            <h1>Unser Team</h1>
+            <h1>Das Team</h1>
             <div class="team-container">
                 <div class="team-member">
                     <img src="Images/Nora.jpg" alt="Nora" class="team-image" data-hover="Images/Norahover.jpg" data-default="Images/Nora.jpg">
                     <h2>Nora</h2>
-                    <p>Nora ist unsere kreative Kopf hinter den besten Playlists und sorgt dafür, dass du immer die aktuellsten Hits entdeckst. Ihre Leidenschaft für Musik ist ansteckend, und sie liebt es, Genres zu mixen und Grenzen zu sprengen.</p>
+                    <p>Nora ist unser kreative Kopf hinter den besten Playlists und sorgt dafür, dass du immer die aktuellsten Hits entdeckst. Ihre Leidenschaft für Musik ist ansteckend, und sie liebt es, Genres zu mixen und Grenzen zu sprengen.
+                    </p>
                 </div>
                 <div class="team-member">
                     <img src="Images/Sara.jpg" alt="Sara" class="team-image" data-hover="Images/Sarahover.jpg" data-default="Images/Sara.jpg">
                     <h2>Sara</h2>
-                    <p>Sara ist unser technisches Genie. Sie stellt sicher, dass hitsound jederzeit reibungslos funktioniert und kümmert sich um die technische Implementierung unserer innovativen Features. Ohne Sara gäbe es keine Beats!</p>
+                    <p>Sara ist unser technisches Genie. Sie stellt sicher, dass hitsound jederzeit reibungslos funktioniert und kümmert
+                        sich um die technische Implementierung unserer innovativen Features. Ohne Sara gäbe es keine Beats!</p>
                 </div>
             </div>
         </section>
@@ -68,8 +68,19 @@
             </div>
         </div>
     </footer>
-    
 
+    <!-- JavaScript für den Hover-Effekt -->
+    <script>
+        document.querySelectorAll('.team-image').forEach(img => {
+            img.addEventListener('mouseover', () => {
+                img.src = img.getAttribute('data-hover');
+            });
+
+            img.addEventListener('mouseout', () => {
+                img.src = img.getAttribute('data-default');
+            });
+        });
+    </script>
 </body>
 
 </html>

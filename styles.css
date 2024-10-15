@@ -53,7 +53,7 @@ h1 {
     font-family: 'Modak', cursive;
     font-weight: normal;
     font-size: 60px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 h2 {
@@ -63,7 +63,7 @@ h2 {
     font-weight: normal;
     font-size: 60px;
     margin: 20px 0;
-    margin-top: 20px;
+    margin-top: 40px;
     font-weight: normal;
 }
 
@@ -122,6 +122,10 @@ main {
     gap: 10px;
     width: 100%;
     padding: 20px 50px; /* Platz für die Pfeile schaffen */
+
+}
+.hits-section{
+    margin-left:10px;
 }
 
 .carousel .song-box {
@@ -160,7 +164,7 @@ main {
 }
 
 .after-carousel-section {
-    margin-top: 200px;
+    margin-top: 120px;
     text-align: center;
 }
 
@@ -311,7 +315,7 @@ body::before {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity: 0.6;
+    opacity: 0.5;
     z-index: -2;
 }
 
@@ -343,7 +347,7 @@ body::before {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 150px;
+    margin-bottom: 230px;
 }
 
 
@@ -356,9 +360,9 @@ body::before {
 }
 
 .team-member {
-    width: 30%;
+    width: 40%;
     text-align: center;
-    margin: 20px;
+    margin: 10px;
 }
 
 .team-member img {
@@ -371,15 +375,19 @@ body::before {
     transition: opacity 0.3s ease-in-out;
 }
 
-.team-member img:hover {
-    opacity: 0; /* Verhindert abruptes Umschalten */
+
+.team-image {
+    transition: opacity 0.3s ease-in-out;
 }
+
+
 
 .team-member h3 {
     font-family: 'Modak';;
     font-size: 30px;
     color: #393937;
     margin-bottom: 10px;
+    
 }
 
 .team-member p {
@@ -417,14 +425,28 @@ body::before {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    margin: 20px 0;
-    width: 100%;
+    padding: 30px;
+    margin: 20px auto; /* margin auto, um die Box in der Mitte zu zentrieren */
+    width: 80%;
+    background-color: #f7f7f7;
+    border-radius: 100px;
+    border: solid 1px #393937;
+}
+
+#artistsChart{
+    max-height: 500px;
+    min-height: 300px;
+}
+
+#songsChart{
+    max-height: 800px;
+    min-height: 500px;
 }
 
 .chart-container canvas {
     max-width: 100%;
     max-height: 500px; /* Maximale Höhe von 500px */
+    padding: 10px;
 }
 
 .chart-container h1 {
@@ -432,8 +454,10 @@ body::before {
     font-size: 40px;
     text-align: center;
     color: #393937;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
+
 
 @media (max-width: 768px) {
     .chart-container h1 {
@@ -442,6 +466,16 @@ body::before {
 
     .chart-container {
         padding: 10px;
+    }
+
+    #artistsChart{
+        max-height: 500px;
+        min-height: 350px;
+    }
+    
+    #songsChart{
+        max-height: 800px;
+        min-height: 400px;
     }
 }
 

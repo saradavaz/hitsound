@@ -1,14 +1,3 @@
-// Wechsel des Bildes bei Hover
-document.querySelectorAll('.team-image').forEach(img => {
-    img.addEventListener('mouseover', () => {
-        img.src = img.getAttribute('data-hover');
-    });
-
-    img.addEventListener('mouseout', () => {
-        img.src = img.getAttribute('data-default');
-    });
-});
-
 // Funktion, um die Musikdaten der Homepage zu holen und 6 Songs im Karussell anzuzeigen
 async function fetchMusicData() {
     const url = 'https://etl.mmp.li/hitsound/etl/unload.php';
@@ -191,19 +180,19 @@ function displayArtistsChart(data) {
     const playCounts = sortedArtists.map(([, count]) => count);
 
     const backgroundColors = [
-        'rgba(152, 126, 236, 1)',
-        'rgba(152, 126, 236, 0.9)',
-        'rgba(152, 126, 236, 0.8)',
-        'rgba(152, 126, 236, 0.7)',
-        'rgba(152, 126, 236, 0.6)',
-        'rgba(152, 126, 236, 0.5)',
-        'rgba(152, 126, 236, 0.4)',
-        'rgba(152, 126, 236, 0.3)'
+        '#963FFF',
+        '#A860FF',
+        '#C595FF',
+        '#DBCEFF',
+        '#D1FF9C',
+        '#B1FF58',
+        '#82E80E',
+        '#59A600',
     ];
 
     const ctx = document.getElementById('artistsChart').getContext('2d');
     const artistsChart = new Chart(ctx, {
-        type: 'pie',
+        type: 'polarArea',
         data: {
             labels: artistNames,
             datasets: [{
@@ -284,7 +273,7 @@ function displaySongsChart(data) {
             datasets: [{
                 label: 'Anzahl der Wiedergaben',
                 data: playCounts,
-                backgroundColor: '#98FF70',
+                backgroundColor: '#B1FF58',
                 borderColor: '#393937',
                 borderWidth: 1,
                 borderRadius: {
@@ -305,7 +294,7 @@ function displaySongsChart(data) {
                     ticks: {
                         font: {
                             family: 'Poppins',
-                            size: 18
+                            size: 14
                         },
                         color: '#393937'
                     },
@@ -314,7 +303,7 @@ function displaySongsChart(data) {
                         text: ' ',
                         font: {
                             family: 'Poppins',
-                            size: 18
+                            size: 14
                         },
                         color: '#393937'
                     }
@@ -326,16 +315,18 @@ function displaySongsChart(data) {
                     ticks: {
                         font: {
                             family: 'Poppins',
-                            size: 18
+                            size: 14
                         },
-                        color: '#393937'
+                        color: '#393937',
+                        maxRotation: 90,
+                        minRotation: 90
                     },
                     title: {
                         display: true,
                         text: ' ',
                         font: {
                             family: 'Poppins',
-                            size: 18
+                            size: 14
                         },
                         color: '#393937'
                     }
@@ -379,3 +370,13 @@ function countSongPlays(songs) {
     });
     return songCounts;
 }
+
+document.querySelectorAll('.team-image').forEach(img => {
+    img.addEventListener('mouseover', () => {
+        img.src = img.getAttribute('data-hover');
+    });
+
+    img.addEventListener('mouseout', () => {
+        img.src = img.getAttribute('data-default');
+    });
+});
